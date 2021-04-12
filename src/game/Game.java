@@ -28,7 +28,9 @@ public class Game extends Board {
             x = s.nextInt();
             y = s.nextInt();
         }
-        board[x][y] = p;
+        if (!set(x, y, p)) {
+            return false;
+        }
         
         if (doesWin(x, y)) {
             System.out.println(p + " Won!");
@@ -45,9 +47,7 @@ public class Game extends Board {
             if (onePlay(players[1])) {
                 return players[1];
             }
-            //NO HABLE ESPANOL
         }
         return null;
     }
-    
 }

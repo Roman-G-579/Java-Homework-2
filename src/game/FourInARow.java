@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class FourInARow extends Game {
     
+    private Scanner s = new Scanner(System.in);
+    
     public FourInARow(String player1, String player2) {
         super(6, 7, new Player(player1, 'W'), new Player(player2, 'B'));
     }
@@ -15,7 +17,6 @@ public class FourInARow extends Game {
     
     @Override
     protected boolean onePlay(Player p) {
-        Scanner s = new Scanner(System.in);
         System.out.println(p.toString() + ", please enter Column:");
         int j = s.nextInt();
         
