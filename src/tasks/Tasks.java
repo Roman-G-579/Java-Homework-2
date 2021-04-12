@@ -14,7 +14,8 @@ public class Tasks {
         Arrays.fill(tasks, -1);
         dependencies = new boolean[num][num];
     }
-    
+
+    //checks whether task1 depends on task2
     public boolean dependsOn(int task1, int task2) {
         if (task1 < 0 || task1 >= num || task2 < 0 || task2 >= num) {
             return false;
@@ -22,7 +23,8 @@ public class Tasks {
         dependencies[task1][task2] = true;
         return true;
     }
-    
+
+    //fills the tasks array in an order following the given dependencies
     public int[] order() {
         int index = 0;
         
@@ -51,7 +53,7 @@ public class Tasks {
                 return tasks;
             }
         }
-        throw new IndexOutOfBoundsException("Dummy return");
+        throw new IndexOutOfBoundsException("Out of bounds error");
     }
     
     // this method clears all of the chosen column dependencies
