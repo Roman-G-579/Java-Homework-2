@@ -56,7 +56,6 @@ public class TasksTester extends Tester {
 		t.dependsOn(0, 3);
 		t.dependsOn(2, 5);
 		t.dependsOn(4, 5);
-		t.dependsOn(5, 3);
 
 		check(!t.dependsOn(7, 4), "Tasks.dependsOn - not handling illegal output well");
 
