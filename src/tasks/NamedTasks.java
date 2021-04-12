@@ -1,29 +1,28 @@
 package tasks;
 
-import java.util.HashMap;
-
 public class NamedTasks extends Tasks {
     
     private String[] names;
     private int length = names.length;
-    private HashMap numbers = new HashMap(names.length);
+    private boolean[][] dependencies;
     
     public NamedTasks(String[] names) {
         super(names.length);
         names = new String[length];
-        
-        // assigns the values to the HashMaps keys
-        for (int i = 0; i < names.length; i++) {
-            numbers.put(i, names[i]);
-        }
     }
     
     public boolean dependsOn(String task1, String task2) {
-        return true;
+        for (int i = 0; i < length; i++) {
+        
+        }
+        for (int i = 0; i < length; i++) {
+        
+        }
+        return false;
     }
     
     public String[] nameOrder() {
-        boolean[][] dependencies = new boolean[length][length];
+        
         int[] reservedTasks = new int[length];
         int k = 0;
         
