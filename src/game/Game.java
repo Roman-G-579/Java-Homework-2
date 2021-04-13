@@ -14,10 +14,12 @@ public class Game extends Board {
         players[1] = p2;
     }
     
+    //checks if the current move is a winning one
     protected boolean doesWin(int i, int j) {
         return i == 0 && j == 0;
     }
     
+    //proccesses a turn, determined by the current player
     protected boolean onePlay(Player p) {
         System.out.println(p.toString() + ", please enter x and y:");
         int x = s.nextInt();
@@ -39,6 +41,7 @@ public class Game extends Board {
         return false;
     }
     
+    //performs a move for each player while the board is not full
     public Player play() {
         while (!isFull()) {
             if (onePlay(players[0])) {

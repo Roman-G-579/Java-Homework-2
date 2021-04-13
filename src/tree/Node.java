@@ -1,10 +1,11 @@
 package tree;
 
 public class Node {
-
+    
     private Node[] children = new Node['z' - 'a' + 1];
     private int count;
-
+    
+    // recursive method which returns the number of appearances of the word in the tree
     public int num(String s) {
         if (s.isEmpty()) {
             return count;
@@ -14,7 +15,8 @@ public class Node {
         }
         return children[s.charAt(0) - 'a'].num(s.substring(1));
     }
-
+    
+    // recursive method which adds the current string to the tree
     public void add(String s) {
         if (s.equals("")) {
             count++;

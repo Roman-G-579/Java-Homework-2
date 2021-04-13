@@ -10,11 +10,13 @@ public class FourInARow extends Game {
         super(6, 7, new Player(player1, 'W'), new Player(player2, 'B'));
     }
     
+    //checks if the current move is a winning one
     @Override
     protected boolean doesWin(int i, int j) {
         return maxLineContaining(i, j) == 4;
     }
     
+    //proccesses a turn, determined by the current player
     @Override
     protected boolean onePlay(Player p) {
         System.out.println(p.toString() + ", please enter Column:");

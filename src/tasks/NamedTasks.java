@@ -38,6 +38,7 @@ public class NamedTasks extends Tasks {
         }
     }
     
+    //checks whether task1 depends on task2
     public boolean dependsOn(String task1, String task2) {
         if (!stringToInteger.containsKey(task1) || !stringToInteger.containsKey(task2)) {
             return false;
@@ -47,6 +48,7 @@ public class NamedTasks extends Tasks {
         return true;
     }
     
+    //fills the names tasks array in an order following the given dependencies
     public String[] nameOrder() {
         int[] numberedOrder = new int[names.length];
         String[] stringOrder = new String[names.length];
@@ -64,5 +66,4 @@ public class NamedTasks extends Tasks {
         }
         return stringOrder;
     }
-    
 }

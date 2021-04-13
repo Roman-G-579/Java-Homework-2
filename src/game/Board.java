@@ -11,6 +11,7 @@ public class Board {
         board = new Player[n][m];
     }
     
+    //places a player mark in the selected coordinate
     protected boolean set(int i, int j, Player p) {
         if (isEmpty(i, j)) {
             board[i][j] = p;
@@ -19,14 +20,17 @@ public class Board {
         return false;
     }
     
+    //checks whether the selected cell is empty
     public boolean isEmpty(int i, int j) {
         return board[i][j] == null;
     }
     
+    //returns a player's reference in the selected cell
     public Player get(int i, int j) {
         return isEmpty(i, j) ? null : board[i][j];
     }
     
+    //checks whether the board is full
     public boolean isFull() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -38,6 +42,7 @@ public class Board {
         return true;
     }
     
+    // returns the game board
     public String toString() {
         String str = new String();
         for (int i = 0; i < n; i++) {
@@ -53,6 +58,7 @@ public class Board {
         return str;
     }
     
+    //returns the length of the longest line that includes the player mark in the selected cell
     protected int maxLineContaining(int i, int j) {
         int maxLength;
         int currentLength;
