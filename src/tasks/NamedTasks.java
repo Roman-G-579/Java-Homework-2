@@ -12,13 +12,24 @@ public class NamedTasks extends Tasks {
     }
     
     public boolean dependsOn(String task1, String task2) {
-        for (int i = 0; i < length; i++) {
-        
+        if(!checkIfExists(task1,task2)){
+            return false;
         }
-        for (int i = 0; i < length; i++) {
         
+    }
+    
+    private boolean checkIfExists(String task1, String task2) {
+        boolean found1 = false, found2 = false;
+        
+        for (int i = 0; i < length; i++) {
+            if (names[i].equals(task1)) {
+                found1 = true;
+            }
+            if (names[i].equals(task2)) {
+                found2 = true;
+            }
         }
-        return false;
+        return found1 && found2;
     }
     
     public String[] nameOrder() {
