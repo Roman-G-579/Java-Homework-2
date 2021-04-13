@@ -1,48 +1,68 @@
 package tasks;
 
+import java.util.HashMap;
+
 public class NamedTasks extends Tasks {
     
     private String[] names;
-    private int length = names.length;
-    private boolean[][] dependencies;
+    private HashMap<String, Integer> stringToInteger = new HashMap<String, Integer>();
+    private HashMap<Integer, String> integerToString = new HashMap<Integer, String>();
     
     public NamedTasks(String[] names) {
         super(names.length);
-        names = new String[length];
+        this.names = names;
+        
+        // "builds" the HashMaps
+        {
+            integerToString.put(0, "zero");
+            integerToString.put(1, "one");
+            integerToString.put(2, "two");
+            integerToString.put(3, "three");
+            integerToString.put(4, "four");
+            integerToString.put(5, "five");
+            integerToString.put(6, "six");
+            integerToString.put(7, "seven");
+            integerToString.put(8, "eight");
+            integerToString.put(9, "nine");
+            
+            stringToInteger.put("zero", 0);
+            stringToInteger.put("one", 1);
+            stringToInteger.put("two", 2);
+            stringToInteger.put("three", 3);
+            stringToInteger.put("four", 4);
+            stringToInteger.put("five", 5);
+            stringToInteger.put("six", 6);
+            stringToInteger.put("seven", 7);
+            stringToInteger.put("eight", 8);
+            stringToInteger.put("nine", 9);
+        }
     }
     
     public boolean dependsOn(String task1, String task2) {
-        if(!checkIfExists(task1,task2)){
+        if (!stringToInteger.containsKey(task1) || !stringToInteger.containsKey(task2)) {
             return false;
         }
         
-    }
-    
-    private boolean checkIfExists(String task1, String task2) {
-        boolean found1 = false, found2 = false;
-        
-        for (int i = 0; i < length; i++) {
-            if (names[i].equals(task1)) {
-                found1 = true;
-            }
-            if (names[i].equals(task2)) {
-                found2 = true;
-            }
-        }
-        return found1 && found2;
+        dependsOn(stringToInteger.get(task1), stringToInteger.get(task2));
+        return true;
     }
     
     public String[] nameOrder() {
+        int[] numberedOrder = new int[names.length];
+        String[] stringOrder = new String[names.length];
         
-        int[] reservedTasks = new int[length];
-        int k = 0;
-        
-        //fills the matrix with the dependency values
-        for (int i = 0; i < length - 1; i++) {
-            for (int j = 0; j < length - 1; j++) {
-                dependencies[i][j] = dependsOn(names[i], names[j]);
-            }
+        //converts the names array to a numbers array
+        for (int i = 0; i < names.length; i++) {
+            numberedOrder[i] = stringToInteger.get(names[i]);
         }
-        return null;
+        
+        numberedOrder = order();
+        
+        // converts the ordered int array into an ordered string array
+        for (int i = 0; i < names.length; i++) {
+            stringOrder[i] = integerToString.get(numberedOrder[i]);
+        }
+        return stringOrder;
     }
+    
 }

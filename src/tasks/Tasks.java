@@ -14,7 +14,7 @@ public class Tasks {
         Arrays.fill(tasks, -1);
         dependencies = new boolean[num][num];
     }
-
+    
     //checks whether task1 depends on task2
     public boolean dependsOn(int task1, int task2) {
         if (task1 < 0 || task1 >= num || task2 < 0 || task2 >= num) {
@@ -23,7 +23,7 @@ public class Tasks {
         dependencies[task1][task2] = true;
         return true;
     }
-
+    
     //fills the tasks array in an order following the given dependencies
     public int[] order() {
         int index = 0;
@@ -73,36 +73,3 @@ public class Tasks {
         return false;
     }
 }
-
-//int[] reservedTasks = new int[num];
-//        Arrays.fill(reservedTasks, -1);
-//        int k = 0;
-//
-//        for (int i = 0; i < num; i++) {
-//
-//            for (int j = 0; j < num; j++) {
-//                //checks if the task has already been sorted
-//                while (existsInArray(reservedTasks, i)) {
-//                    i++;
-//                }
-//                //checks whether the current cell is dependant
-//                //if it is, skips to the next row
-//                if (i < num && dependencies[i][j]) {
-//                    i++;
-//                    if(i == num){
-//
-//                    }
-//                    j = 0;
-//                } else if (j == num - 1 && k < num) {
-//                    reservedTasks[k] = tasks[i];
-//                    k++;
-//                    clearRow(dependencies, i);
-//
-//                    i = -1; // resets the dependencies check for the updated matrix
-//                }
-//            }
-//        }
-//        if (k == num) {
-//            return reservedTasks;
-//        }
-//        return null;

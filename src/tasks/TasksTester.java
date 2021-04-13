@@ -33,7 +33,7 @@ public class TasksTester extends Tester {
 		testEqualClasses(NamedTasks.class, NamedTasksSk.class);
 	}
 
-	private static boolean fulfills(int[] a, int task1, int task2) {		
+	private static boolean fulfills(int[] a, int task1, int task2) {
 		for (int i = 0; i < a.length; i++) {
 			if (a[i] == task1)
 				return false;
