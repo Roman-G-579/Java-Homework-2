@@ -36,7 +36,7 @@ public class Tasks {
                 }
                 if (dependencies[row][column]) {
                     row++;
-                    column = 0;
+                    column = -1;
                 }
                 //checks if the current row is out of the matrix's bounds
                 // , which means there's a dependency loop
@@ -58,7 +58,7 @@ public class Tasks {
     
     // this method clears all of the chosen column dependencies
     private void clearRow(int column) {
-        for (int i = 0; i < num - 1; i++) {
+        for (int i = 0; i < num; i++) {
             dependencies[i][column] = false;
         }
     }
